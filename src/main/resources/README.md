@@ -25,4 +25,11 @@ Este proyecto es una aplicación de ejemplo desarrollada con Spring Boot, que in
    java -jar target/EvaNisumDiegoMunoz-0.0.1-SNAPSHOT.jar
 5. Para prues unitarias ejecuta:
    mvn test
+6. Para visualizar la base de datos H2:
+   http://localhost:8080/h2-console
+   Como usuario se usa: user
+   Como clave se usa: admin
+7. Para ver la documentación Swagger:
+   ejecutar la aplicación y luego usar la url http://localhost:8080/swagger-ui/index.html
+   
 
