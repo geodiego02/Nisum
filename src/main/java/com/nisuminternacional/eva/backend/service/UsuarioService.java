@@ -13,28 +13,28 @@ import com.nisuminternacional.eva.backend.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 
+	private final UsuarioRepository usuarioRepository;
+    private final EmailValidator emailValidator;
+    private final PasswordValidator passwordValidator;
+
     @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    private EmailValidator emailValidator;
-    private PasswordValidator passwordValidator;
-
-    public UsuarioService() {
-        this.emailValidator = new RegexEmailValidator("^[A-Za-z0-9+_.-]+@(.+)$");
-        this.passwordValidator = new RegexPasswordValidator("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$");
+    public UsuarioService(UsuarioRepository usuarioRepository, EmailValidator emailValidator, PasswordValidator passwordValidator) {
+        this.usuarioRepository = usuarioRepository;
+        this.emailValidator = emailValidator;
+        this.passwordValidator = passwordValidator;
     }
 
     public Usuario registrarUsuario(Usuario usuario) throws UsuarioExistenteException {
         if (!emailValidator.validate(usuario.getEmail())) {
-            throw new IllegalArgumentException("El correo tiene un formato inválido");
+            throw new IllegalArgumentException("El correo tiene un formato inválido. Se debe cambiar.");
         }
 
         if (!passwordValidator.validate(usuario.getPassword())) {
-            throw new IllegalArgumentException("La contraseña tiene un formato inválido");
+            throw new IllegalArgumentException("La contraseña tiene un formato inválido. Se debe cambiar.");
         }
 
         if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
-            throw new UsuarioExistenteException("El correo ya registrado");
+            throw new UsuarioExistenteException("El correo ingresado ya se encuentra registrado. Debe escoger otro correo.");
         }
 
         usuario.setCreated(new Date());
