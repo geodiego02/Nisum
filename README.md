@@ -31,3 +31,20 @@ Este proyecto es una aplicación de ejemplo desarrollada con Spring Boot, que in
    Como clave se usa: admin
 7. Para ver la documentación Swagger:
    ejecutar la aplicación y luego usar la url http://localhost:8080/swagger-ui/index.html
+8. Las condiciones a validar con expresiones regulares en mail y clave de usuario se pueden 
+   modificar en el archivo de propiedades aplication.properties.
+9. Los patrones de diseño utilizados son los siguientes:
+- Patrón Factory
+- Patrón Builder
+- Patrón Singleton
+- Patrón Adapter
+- Patrón Strategy
+- Patrón Dependency Injection
+- Patrón MVC (Model-View-Controller)
+- Patrón DAO (Data Access Object)
+- Patrón Controller Advice
+- Patrón Proxy (implícito en Spring Security)
+
+10. Es posible ejecutar la aplicación sin tener que compilar ni empaquetar con el siguiente 
+    comando:
+    mvn spring-boot:run
